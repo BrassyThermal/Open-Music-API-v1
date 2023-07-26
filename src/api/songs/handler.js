@@ -23,14 +23,14 @@ class SongHandler {
 
     return this._createResponse(h, 201, {
       status: 'success',
-      message: 'Lagu berhasil ditambahkan',
+      message: 'Lagu berhasil ditambahkan!',
       data: { songId },
     });
   }
 
   async getAllHandler(request, h) {
     const { title, performer } = request.query;
-    const songs = await this._service.getSongs(title, performer);
+    const songs = await this._service.getAllSongs(title, performer);
 
     return this._createResponse(h, 200, {
       status: 'success',
@@ -52,11 +52,11 @@ class SongHandler {
     this._validatePayload(request.payload);
 
     const { id } = request.params;
-    await this._service.editSongById(id, request.payload);
+    await this._service.updateSongById(id, request.payload);
 
     return this._createResponse(h, 200, {
       status: 'success',
-      message: 'Lagu telah diperbarui',
+      message: 'Lagu telah diperbarui!',
     });
   }
 
@@ -66,7 +66,7 @@ class SongHandler {
 
     return this._createResponse(h, 200, {
       status: 'success',
-      message: 'Lagu telah dihapus',
+      message: 'Lagu telah dihapus!',
     });
   }
 }

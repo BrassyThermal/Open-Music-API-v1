@@ -24,7 +24,7 @@ class AlbumsHandler {
 
     return this._createResponse(h, 201, {
       status: 'success',
-      message: 'Album berhasil ditambahkan',
+      message: 'Album berhasil ditambahkan!',
       data: { albumId },
     });
   }
@@ -48,7 +48,7 @@ class AlbumsHandler {
 
     return this._createResponse(h, 200, {
       status: 'success',
-      message: 'Album telah diperbarui',
+      message: 'Album telah diperbarui!',
     });
   }
 
@@ -58,7 +58,7 @@ class AlbumsHandler {
 
     return this._createResponse(h, 200, {
       status: 'success',
-      message: 'Album telah dihapus',
+      message: 'Album telah dihapus!',
     });
   }
 }

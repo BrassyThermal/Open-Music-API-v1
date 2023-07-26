@@ -24,7 +24,7 @@ class SongService {
     return result.rows[0].id;
   }
 
-  async getSongs(title, performer) {
+  async getAllSongs(title, performer) {
     if (title && performer) {
       const query = {
         text: "SELECT id, title, performer FROM songs WHERE LOWER(title) LIKE '%' || LOWER($1) || '%' AND LOWER(performer) LIKE '%' || LOWER($2) || '%'",
@@ -60,11 +60,11 @@ class SongService {
     return result.rows[0];
   }
 
-  async editSongById(id, {
+  async updateSongById(id, {
     title, year, genre, performer, duration, albumId,
   }) {
     const query = {
-      text: 'UPDATE songs SET title = $1, year = $2, genre = $3, performer = $4, duration = $5, "albumId" = $6 WHERE id = $7 RETURNING id',
+      text: 'UPDATE songs SET title = $1, year = $2, genre = $3, performer = $4, duration = $5, "album_id" = $6 WHERE id = $7 RETURNING id',
       values: [title, year, genre, performer, duration, albumId, id],
     };
     const result = await this._pool.query(query);
